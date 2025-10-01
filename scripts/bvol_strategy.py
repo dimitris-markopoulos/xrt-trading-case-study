@@ -237,7 +237,7 @@ def plot_return_distribution(signal_matrix_df, path, holding_period):
 
 
 
-def bvol_summary_statistics(signal_matrix_df : pd.DataFrame, path : str = "html_files/bvol_summary_stats.html"):
+def bvol_summary_statistics(signal_matrix_df : pd.DataFrame, path : str = "docs/bvol_summary_stats.html"):
 
     final_returns = signal_matrix_df.iloc[-1,:].copy().values
     avg_return = np.mean(final_returns)
@@ -393,19 +393,19 @@ if __name__ == '__main__':
     
     plot_bvol_signal(
         df=df, 
-        path='html_files/bvol_signal_plot.html',
+        path='docs/bvol_signal_plot.html',
         params=params_dict
     )
 
     plot_return_distribution(
         signal_matrix_df=signal_matrix_df,
-        path='html_files/bvol_final_returns.html',
+        path='docs/bvol_final_returns.html',
         holding_period=holding_period
     )
 
     bvol_summary_statistics(
         signal_matrix_df = signal_matrix_df, 
-        path = "html_files/bvol_summary_stats.html"
+        path = "docs/bvol_summary_stats.html"
     )
 
     # OPTIMIZATION 
@@ -422,7 +422,7 @@ if __name__ == '__main__':
         signal_matrix_df=signal_matrix_df,
         stoploss_matrix_df=signal_matrix_stoploss_3perc_df,
         stop_loss=-0.03,
-        path = 'html_files/stop_loss_plots/perc3_stoploss.html'
+        path = 'docs/stop_loss_plots/perc3_stoploss.html'
     )
 
     # 5%
@@ -437,7 +437,7 @@ if __name__ == '__main__':
         signal_matrix_df=signal_matrix_df,
         stoploss_matrix_df=signal_matrix_stoploss_5perc_df,
         stop_loss=-0.05,
-        path = 'html_files/stop_loss_plots/perc5_stoploss.html'
+        path = 'docs/stop_loss_plots/perc5_stoploss.html'
     )
 
     # 10%
@@ -452,5 +452,5 @@ if __name__ == '__main__':
         signal_matrix_df=signal_matrix_df,
         stoploss_matrix_df=signal_matrix_stoploss_10perc_df,
         stop_loss=-0.10,
-        path = 'html_files/stop_loss_plots/perc10_stoploss.html'
+        path = 'docs/stop_loss_plots/perc10_stoploss.html'
     )

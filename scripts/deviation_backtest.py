@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 def plot_signal_window(
         df : pd.DataFrame,
         hit_df : pd.DataFrame,
-        path : str = 'html_files/signal_window.html'
+        path : str = 'docs/signal_window.html'
     ):
 
     fig = go.Figure()
@@ -76,7 +76,7 @@ def signal_matrix(
 
     return matrix_df
 
-def plot_dist_endpoints(matrix_df : pd.DataFrame, path : str = 'html_files/endpoint_distribution.html'):
+def plot_dist_endpoints(matrix_df : pd.DataFrame, path : str = 'docs/endpoint_distribution.html'):
     endpoints = matrix_df.iloc[-1, :] # last row = day 60
     endpoints.name = 'fwd_60day_returns'
 
@@ -110,7 +110,7 @@ def plot_dist_endpoints(matrix_df : pd.DataFrame, path : str = 'html_files/endpo
 
     fig.write_html(path, include_plotlyjs="cdn")
 
-def plot_return_paths_post_signal(matrix_df : pd.DataFrame, path : str = 'html_files/return_path_after_signal.html'):
+def plot_return_paths_post_signal(matrix_df : pd.DataFrame, path : str = 'docs/return_path_after_signal.html'):
     fig = go.Figure()
 
     for col in matrix_df.columns:
@@ -227,15 +227,15 @@ if __name__ == '__main__':
     plot_signal_window(
         df=df,
         hit_df=hit_df,
-        path='html_files/signal_window.html'
+        path='docs/signal_window.html'
     )
 
     # PART 2
     matrix_df = signal_matrix(df=df,hit_df=hit_df)
-    plot_dist_endpoints(matrix_df=matrix_df, path='html_files/endpoint_distribution.html')
-    plot_return_paths_post_signal(matrix_df=matrix_df, path='html_files/return_path_after_signal.html')
+    plot_dist_endpoints(matrix_df=matrix_df, path='docs/endpoint_distribution.html')
+    plot_return_paths_post_signal(matrix_df=matrix_df, path='docs/return_path_after_signal.html')
 
     sharpe_df = sharpe_matrix_calculations(df=df,hit_df=hit_df)
-    sharpe_df.to_html('html_files/sharpe_df.html')
+    sharpe_df.to_html('docs/sharpe_df.html')
     
-    sharpe_plot(sharpe_df=sharpe_df, path='html_files/sharpe_plot.html')
+    sharpe_plot(sharpe_df=sharpe_df, path='docs/sharpe_plot.html')

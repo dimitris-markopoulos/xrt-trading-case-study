@@ -58,9 +58,9 @@ if __name__ == '__main__':
     x["Date"] = x["Date"].astype(str)
 
     # save table html
-    to_html_with_ellipsis(x, n_head=7, n_tail=7, path="html_files/truncated_table.html")
+    to_html_with_ellipsis(x, n_head=7, n_tail=7, path="docs/truncated_table.html")
 
     # save plot html
-    timeseries_plot(df, path = "html_files/XRT_timeseries.html")
+    timeseries_plot(df, path = "docs/XRT_timeseries.html")
 
     print("*** Successfully Saved ***")

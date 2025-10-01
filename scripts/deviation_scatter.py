@@ -12,7 +12,7 @@ from sklearn.pipeline import make_pipeline
 from scipy.stats import gaussian_kde
 
 
-def viz_scatterplot(df : pd.DataFrame, path : str = "html_files/forward_returns_vs_deviation.html"):
+def viz_scatterplot(df : pd.DataFrame, path : str = "docs/forward_returns_vs_deviation.html"):
     #======= Compute forward returns =======
     df["Forward_20d_Return"] = np.log(df["XRT Price"].shift(-20) / df["XRT Price"])
     plot_df = df.dropna(subset=["Forward_20d_Return"])
@@ -82,7 +82,7 @@ def viz_scatterplot(df : pd.DataFrame, path : str = "html_files/forward_returns_
 
     fig.write_html(path, include_plotlyjs="cdn")
 
-def plot_hitrate(df: pd.DataFrame, path: str = 'html_files/hitrate.html'):
+def plot_hitrate(df: pd.DataFrame, path: str = 'docs/hitrate.html'):
     data = df['Deviation']
 
     # Compute forward 20d return
@@ -177,5 +177,5 @@ def plot_hitrate(df: pd.DataFrame, path: str = 'html_files/hitrate.html'):
 
 if __name__ == '__main__':
     df = pd.read_excel('bw_data.xlsx')
-    viz_scatterplot(df, path='html_files/forward_returns_vs_deviation.html')
-    plot_hitrate(df, path='html_files/hitrate.html')
+    viz_scatterplot(df, path='docs/forward_returns_vs_deviation.html')
+    plot_hitrate(df, path='docs/hitrate.html')
